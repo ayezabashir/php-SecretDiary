@@ -2,6 +2,14 @@
 session_start();
 $error ="";
 
+if(array_key_exists('logout', $_GET)){
+  unset($_SESSION);
+  setcookie('id', '', time() - 60*60);
+  $_COOKIE['id'] = '';
+} else if(array_key_exists('id',$_SESSION) OR array_key_exists('id',$_COOKIE)){
+  header("loggedIn.php");
+}
+
 if(array_key_exists('submit', $_POST)){
 
   $link = mysqli_connect("localhost","root","","secret_diary");
@@ -43,11 +51,11 @@ if(array_key_exists('submit', $_POST)){
         mysqli_query($link, $query);
 
         $_SESSION['id'] = mysqli_insert_id($link);
-        if($_POST['stayLoggedIn'] == '1'){
+        if($_POST['stayLoggedIn'] = '1'){
           setcookie('id', mysqli_insert_id($link), time()+ 60*60*24*365);
-        };
+        }
 
-        echo "Signed up successfully!";
+        header('Location: loggedIn.php');
       }
     }
   }
