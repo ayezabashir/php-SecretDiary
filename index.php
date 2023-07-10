@@ -86,21 +86,67 @@ if(array_key_exists('submit', $_POST)){
 
 ?>
 
-<div id=''> <?php echo $error ?></div>
-<!-- SIGN UP -->
-<form method="post">
-  <input type="email" name="email" placeholder="Email" id="" />
-  <input type="password" name="password" placeholder="Password" />
-  <input type="checkbox" name="stayLoggedIn" value="1" id="" />
-  <input type="hidden" name="signUp" value='1'>
-  <input type="submit" name="submit" value="Sign Up" />
-</form>
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!-- SIGN IN -->
-<form method="post">
-  <input type="email" name="email" placeholder="Email" id="" />
-  <input type="password" name="password" placeholder="Password" />
-  <input type="checkbox" name="stayLoggedIn" value="1" id="" />
-  <input type="hidden" name="logIn" value='0'>
-  <input type="submit" name="submit" value="Log In" />
-</form>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" integrity="sha384-PJsj/BTMqILvmcej7ulplguok8ag4xFTPryRq8xevL7eBYSmpXKcbNVuy+P0RMgq" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="styles.css">
+    <title>Secret Diary</title>
+  </head>
+  <body>
+
+  <div class="container">
+    <h1>Secret Diary</h1>
+    <p>Secure your thoughts permanently and securely</p>
+    <div id=''> <?php echo $error ?></div>
+        <!-- SIGN UP -->
+        <form method="post">
+          <fieldset class="form-group mb-3">
+              <input type="email" name="email" placeholder="Email" class="form-control" />
+          </fieldset>
+          <fieldset class="form-group mb-3">
+              <input type="password" name="password" placeholder="Password" class="form-control" />
+          </fieldset>
+          <fieldset class="checkbox">
+            <label>
+                <input type="checkbox" name="stayLoggedIn" value="1" id="" />
+                Stay Logged in
+            </label>
+          </fieldset>
+          <fieldset class="form-group my-3">
+              <input type="hidden" name="signUp" value='1'>
+              <input type="submit" name="submit" value="Sign Up" class="btn btn-success" />
+          </fieldset>
+        </form>
+
+        <!-- SIGN IN -->
+        <form method="post">
+          <fieldset class="form-group mb-3">
+              <input type="email" name="email" placeholder="Email" id="" class="form-control" />
+          </fieldset>
+          <fieldset class="form-group mb-3">
+              <input type="password" name="password" placeholder="Password" class="form-control" />
+          </fieldset>
+          <fieldset class="checkbox">
+            <label>
+              <input type="checkbox" name="stayLoggedIn" value="1" id="" />
+              Stay Logged in
+            </label>
+          </fieldset>
+          <fieldset class="form-group my-3">
+              <input type="hidden" name="logIn" value='0'>
+              <input type="submit" name="submit" value="Log In" class="btn btn-success" />
+          </fieldset>
+        </form>
+  </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+
+  </body>
+</html>
