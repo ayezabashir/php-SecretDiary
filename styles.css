@@ -3,10 +3,10 @@
 body {
   background: url("bg.jpg");
   background-size: cover;
-  font-family: "Bebas Neue", cursive;
 }
 
 h1 {
+  font-family: "Bebas Neue", cursive;
   font-size: 3em;
   background-image: linear-gradient(gold, gold);
   background-size: 100% 10px;
@@ -24,7 +24,6 @@ h1:hover {
 .container {
   max-width: 400px;
   text-align: center;
-  margin-top: 100px;
   background: transparent;
 }
 
@@ -35,8 +34,22 @@ form,
 }
 
 .btn-success {
+  font-family: "Bebas Neue", cursive;
   background: gold !important;
   color: #111;
   outline: none;
   border: none;
+}
+
+#login {
+  display: none;
+}
+
+a {
+  font-family: "Bebas Neue", cursive;
+  color: black;
+}
+
+#homePageContainer {
+  margin-top: 100px;
 }
