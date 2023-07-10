@@ -1,5 +1,4 @@
 <?php
-session_start();
 
 if(array_key_exists('id',$_COOKIE)){
     $_SESSION['id']= $_COOKIE['id'];
@@ -11,4 +10,15 @@ else{
     header("Location: index.php");
 }
 
+?>
+<?php
+include('component/header.php');
+?>
+
+<div class="container-fluid">
+    <textarea class="form-control"></textarea>
+</div>
+
+<?php
+include('component/footer.php');
 ?>
