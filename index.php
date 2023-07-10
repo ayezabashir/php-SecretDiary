@@ -1,7 +1,15 @@
 <?php
 
 $error ="";
+
 if(array_key_exists('submit', $_POST)){
+
+  $link = mysqli_connect("localhost","root","","secret_diary");
+
+  if(mysqli_connect_error()){
+    die('There is problem in your connection or database');
+  }
+
   // print_r($_POST);
   if(!$_POST['email']){
     $error .="Email Address is required!";
@@ -11,6 +19,24 @@ if(array_key_exists('submit', $_POST)){
   }
   if($error!=""){
     $error = "<p>There were error(s) in your form</p>";
+  }
+  else{
+    $query = "SELECT id FROM `users` WHERE email='".mysqli_real_escape_string($link,$_POST['email'])."' LIMIT 1 ";
+    $result = mysqli_query($link, $query);
+
+    if(mysqli_num_rows($result)>0){
+      $error = "Email address is already taken";
+    }
+    else{
+      $query = "INSERT INTO `users` (`email`,`password`) VALUES ('".mysqli_real_escape_string($link,$_POST['email'])."','".mysqli_real_escape_string($link,$_POST['password'])."')";
+      
+      if(!mysqli_query($link, $query)){
+        $error = "<p>Could not Sign up! Please try again.</p>";
+      }
+      else{
+        echo "Signed up successfully!";
+      }
+    }
   }
 }
 
