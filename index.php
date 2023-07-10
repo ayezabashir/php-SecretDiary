@@ -34,6 +34,13 @@ if(array_key_exists('submit', $_POST)){
         $error = "<p>Could not Sign up! Please try again.</p>";
       }
       else{
+        $query = "UPDATE `users` SET password = 
+                  '".md5(mysqli_insert_id($link).$_POST['password'])."'
+                  WHERE id= '".mysqli_insert_id($link)."'
+                  LIMIT 1
+                ";
+
+        mysqli_query($link, $query);
         echo "Signed up successfully!";
       }
     }
