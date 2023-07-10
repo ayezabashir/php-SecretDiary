@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 $error ="";
 
 if(array_key_exists('submit', $_POST)){
@@ -41,6 +41,12 @@ if(array_key_exists('submit', $_POST)){
                 ";
 
         mysqli_query($link, $query);
+
+        $_SESSION['id'] = mysqli_insert_id($link);
+        if($_POST['stayLoggedIn'] == '1'){
+          setcookie('id', mysqli_insert_id($link), time()+ 60*60*24*365);
+        };
+
         echo "Signed up successfully!";
       }
     }
